@@ -5,11 +5,10 @@
     border: 0;
     outline: 0;
     box-sizing: border-box;
-    -webkit-box-sizing: border-box;
 }
 .titulo{
 	margin: 16px 0;
-    /* text-align: left; */
+    color: #656565;
     padding-left: 8%;
     font-size: 30px;
 	border-bottom: 2px solid #1E90FF;
@@ -125,11 +124,10 @@ input[type=radio]{
 	margin: 3px 0 0 1px;
 }
 input[type=radio].css-checkbox {
-	position:absolute; 
+	position:relative; 
 	z-index:-1000;
 	left:-1000px;
 	overflow: hidden;
-	clip: rect(0 0 0 0);
 	height:1px;
 	width:1px;
 	margin:-1px;
@@ -155,13 +153,13 @@ input[type=radio].css-checkbox:checked + label.css-label {
 	background-position: 0 -16px;
 }
 label.css-label {
-	background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_cce337a3f8bb55521f55ec55906db31e.png);
-	-webkit-touch-callout: none;
+	background-image:url(../images/csscheckbox.png);
+/*	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
+	user-select: none;*/
 }
 
 
@@ -179,5 +177,15 @@ label.css-label {
 	label.grid{
 		width: 100%;
 		text-align: left;
+	}
+}
+@media screen and (max-width: 360px){
+	.titulo{
+    font-size: 27px;
+    padding-left: 0;
+    text-align: center;
+	}
+	html,body{
+		max-width: 360px;
 	}
 }
