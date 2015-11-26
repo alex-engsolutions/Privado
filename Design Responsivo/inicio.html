@@ -4,30 +4,50 @@
 	<meta charset="UTF-8">
 	<meta type="viewport" content="width=device-width, initial-scale=1">
 	<title>Design Responsivo</title>
-	<link rel="stylesheet" type="text/css" href="css/fluido.css">
+	<link rel="stylesheet" type="text/css" href="css/fluido.css" media="screen">
 </head>
 <body>
 	<div id="corpo">
-		<div id="topo">
-		</div>
 		<div id="conteudo">
 			<div class="line">
-				<label class="grid col1">Nome:</label>
-				<input type="text" class="grid col5">
+				<h2 class="titulo">Titulo</h2>
 			</div>
 			<div class="line">
-				<label class="grid col1">Usuário:</label>
-				<input type="text" class="grid col1">
+				<label for="inp-nome" class="grid col1">Nome:</label>
+				<input type="text" id="inp-nome" class="grid col5">
+			</div>
+			<div class="line">
+				<label for="txt-usuario" class="grid col1">Usuário:</label>
+				<input type="text" id="txt-usuario" class="grid col1">
+			</div>
+			<div class="line">
 				<label class="grid col1">Sexo:</label>
-				<div class="radio grid col3">
+				<div class="radio grid col4">
 					<div class="radio-option">
 						<input type="radio" name="sexo" id="masc">
 						<label for="masc">Masculino</label>
 					</div>
+					<div class="radio-option">
+						<input type="radio" name="sexo" id="femi">
+						<label for="femi">Feminino</label>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div id="rodape">
+			<div class="line">
+				<label for="select" class="grid col1">Select:</label>
+				<select class="grid col5" id="select">
+						<option>Todas</option>
+						<option>Regional do NVII</option>
+						<option>Regional São Paulo</option>
+						<option>Regional STA I</option>
+						<option>Regional STA II</option>
+						<option>Regional STA III</option>
+						<option>Regional STA IV</option>
+						<option>Regional STA V</option>
+						<option>Apoena</option>
+						<option>SBRR</option>
+				</select>
+			</div>
 		</div>
 	</div>
 </body>
