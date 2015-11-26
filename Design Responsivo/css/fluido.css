@@ -8,8 +8,13 @@
     -webkit-box-sizing: border-box;
 }
 .titulo{
-	text-align: left;
-	border-bottom: 1px solid black;
+	margin: 16px 0;
+    /* text-align: left; */
+    padding-left: 8%;
+    font-size: 30px;
+	border-bottom: 2px solid #1E90FF;
+	font-family: "Roboto-Light";
+	font-weight: normal;
 }
 #corpo{
 	width: 100%;
@@ -85,9 +90,9 @@ input.grid:focus,select.grid:focus{
 label.grid{
 	text-align: right;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 14px;
 	padding: 2px 2px;
-	font-family: "Calibri Light";
+	font-family: "Roboto-Light";
 }
 input.grid,select.grid{
 	border-radius: 1px;
@@ -107,8 +112,8 @@ input.grid,select.grid{
 .radio-option > label{
 	padding: 0 3px;
 	display: inline-block;
-	font-size: 16px;
-	font-family: "Calibri Light";
+	font-size: 14px;
+	font-family: "Roboto-Light";
 }
 .radio{
 		padding-top: 3px;
