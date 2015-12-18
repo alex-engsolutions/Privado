@@ -7,21 +7,30 @@
 	<link rel="shortcut icon" href="images/favicon1.png">
 	<link rel="stylesheet" href="css/fluido.css" media="screen">
 	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		$("table.grid tbody > tr:odd").addClass("odd");
+		$("table tbody tr.odd td").css("background-color","rgba(164, 214, 249, 0.29)");
+	});
+	</script>
 </head>
 <body>
 	<div id="corpo">
 		<div id="conteudo">
 				<h2 class="titulo">Cadastro de Usuário</h2>
 			<div class="line">
-				<label for="inp-nome" class="grid col1">Nome:</label>
+				<label for="inp-nome" class="grid col2">Nome:</label>
 				<input type="text" id="inp-nome" class="grid col5">
 			</div>
 			<div class="line">
-				<label for="txt-usuario" class="grid col1">Usuário:</label>
-				<input type="text" id="txt-usuario" class="grid col1">
+				<label for="txt-usuario" class="grid col2">Usuário:</label>
+				<input type="text" id="txt-usuario" class="grid col2">
 			</div>
 			<div class="line">
-				<label class="grid col1">Sexo:</label>
+				<label class="grid col2">Sexo:</label>
 				<div class="radio grid col4">
 					<div class="radio-option">
 						<input checked type="radio" name="sexo" id="masc" class="css-checkbox">
@@ -34,7 +43,7 @@
 				</div>
 			</div>
 			<div class="line">
-				<label for="select" class="grid col1">Select:</label>
+				<label for="select" class="grid col2">Select:</label>
 				<select class="grid col5" id="select">
 						<option>Todas</option>
 						<option>Regional do NVII</option>
@@ -47,6 +56,49 @@
 						<option>Apoena</option>
 						<option>SBRR</option>
 				</select>
+			</div>
+			<div class="line">
+				<label class="grid col2">Input Colors:</label>
+				<input type="text" class="grid col3">				
+			</div>
+
+			<div class="line">
+				<table class="grid" style="margin:0 auto; width: 800px;">
+					<thead>
+						<tr>
+							<th align="center" style="width: 100px;">Código</th>
+							<th align="center" style="width: 200px;">Usuário</th>
+							<th align="center">Nome</th>
+							<th align="center" style="width: 100px;">Data Cadastro</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="center">1055</td>
+							<td>alexmartins</td>
+							<td>Alex Sandro Martins Moura</td>
+							<td align="center">16/12/2015</td>
+						</tr>
+						<tr>
+							<td align="center">1055</td>
+							<td>alexmartins</td>
+							<td>Alex Sandro Martins Moura</td>
+							<td align="center">16/12/2015</td>
+						</tr>
+						<tr>
+							<td align="center">1055</td>
+							<td>alexmartins</td>
+							<td>Alex Sandro Martins Moura</td>
+							<td align="center">16/12/2015</td>
+						</tr>
+						<tr>
+							<td align="center">1055</td>
+							<td>alexmartins</td>
+							<td>Alex Sandro Martins Moura</td>
+							<td align="center">16/12/2015</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
