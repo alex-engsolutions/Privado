@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lista Telefonica</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<style>
+	.jumbotron {
+		margin-top: 20px;
+    	width: 600px;
+    	margin: 0 auto;
+	}
+	th{
+		text-align: center;
+	}
+	.form-control{
+		margin-bottom: 5px;
+	}
+	</style>
+
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	angular.module('listaTelefonica',[]);
+	angular.module('listaTelefonica').controller('listaTelefonicaCtrl',function($scope){
+		$scope.app = 'Lista Telefonica';
+		$scope.contatos = [
+			{nome: 'Pedro Augusto da Silva', telefone: '99998888'},
+			{nome: 'João Pedro dos Santos', telefone: '99998899'},
+			{nome: 'Maria Aparecida da Cunha', telefone: '99996666'}
+		];
+
+		$scope.operadoras = [
+			{nome: 'Oi', codigo: 14, categoria: 'Celular'},
+			{nome: 'Vivo', codigo: 15, categoria: 'Celular'},
+			{nome: 'Tim', codigo: 41, categoria: 'Celular'},
+			{nome: 'GVT', codigo: 25, categoria: 'Fixo'},
+			{nome: 'Embratel', codigo: 21, categoria: 'Fixo'}
+		]
+		$scope.addContato = function(contato){
+			$scope.contatos.push(angular.copy(contato));
+			delete $scope.contato;
+		}
+	});
+
+		function btnExcluir(obj){
+			
+			// Capturamos a referência da TR (linha) pai do objeto
+                var objTR = obj.parentNode.parentNode;
+                // Capturamos a referência da TABLE (tabela) pai da linha
+                var objTable = objTR.parentNode;
+                // Capturamos o índice da linha
+                var indexTR = objTR.row;
+                // Chamamos o método de remoção de linha nativo do JavaScript, passando como parâmetro o índice da linha  
+                objTable.deleteRow(indexTR);
+
+		}
+	</script>
+	<style>
+	td > button.btn{
+		padding: 0 5px;
+		text-align: left;
+		border-style: none;
+		background-color: transparent;
+	}
+	td > button.btn:visited{
+		border-style: none;
+	}
+	td > button.btn > i[class="fa fa-times-circle"]{
+		color: red;
+	}
+	</style>
+</head>
+<body ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron text-center">
+		<h4>{{app}}</h4>
+		<table class="table table-bordered" style="margin-top: 20px;">
+			<thead>
+				<tr>
+					<th>Nome</th> 
+					<th style="width: 100px;">Telefone</th>
+					<th style="width: 100px;">Operadora</th>
+					<th style="width: 100px;">Categoria</th>
+					<th style="width: 25px;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="contato in contatos">
+					<td class="text-left">{{contato.nome}}</td>
+					<td>{{contato.telefone}}</td>
+					<td>{{contato.operadora.nome}}</td>
+					<td>{{contato.operadora.categoria}}</td>
+					<td>
+						<button type="button" class="btn" title="Remover Registro" onclick="btnExcluir(this)" id="btnDel">
+							<i class="fa fa-times-circle"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</hr>
+		<input type="text" class="form-control" id="txtNome" ng-model="contato.nome" placeholder="Nome...">	
+		<input type="text" class="form-control" id="txtFone"ng-model="contato.telefone" placeholder="Telefone...">
+		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+			<option value="">Selecione um Operadora...</option>
+		</select>
+		<button type="button" class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="addContato(contato)">Adicionar</button>	
+	</div>
+</body>
+</html>

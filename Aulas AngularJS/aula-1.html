@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="helloWorld">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module("helloWorld", []);
+		angular.module("helloWorld").controller('HWController',function($scope){
+			$scope.titulo = 'Hello World !!!';
+		})
+	</script>
+</head>
+<body ng-controller="HWController">
+	<h1 align="center">{{ titulo }}</h1>
+</body>
+</html>

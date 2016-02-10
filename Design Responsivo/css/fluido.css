@@ -166,7 +166,7 @@ table.grid{
 	font-family: "Roboto-Light";
 	font-size: 14px;
 	line-height: 1.4;
-	border: 1px solid #A2D5F9;
+	border: 2px solid #8D9C52;
 }
 table.grid th{
 	font-weight: bold;
@@ -177,11 +177,19 @@ table.grid td{
 }
 table.grid tr > td:hover{
 	cursor: default;
-
+}
+table tbody tr.odd{
+	background-color: rgba(141, 156, 82, 0.15);
+}
+table tbody tr.rowselected{
+	background-color: #B5B5B5 !important;
+}
+table tbody tr.rowselected td{
+	border-color: transparent !important;
 }
 table.grid tr > th{
 	padding: 4px;
-	background-color: #A2D5F9;
+	background-color: #8D9C52;
 }
 
 

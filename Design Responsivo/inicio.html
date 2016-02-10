@@ -13,7 +13,31 @@
 	$(document).ready(function(){
 
 		$("table.grid tbody > tr:odd").addClass("odd");
-		$("table tbody tr.odd td").css("background-color","rgba(164, 214, 249, 0.29)");
+
+		$(document).find("table").each(function(){
+			$(".input-checkbox").css("border-left","1px solid #8D9C52");
+		});
+
+		$("#check-todos").click(function(){
+			if($(this).is(":checked")){
+				$("#tabela tbody :checkbox").prop('checked',true).closest('tr').addClass('rowselected');
+			}
+			else{
+				$("#tabela tbody :checkbox").prop('checked',false).closest('tr').removeClass('rowselected');
+			}
+		});
+
+		$("#tabela tbody :checkbox").click(function(){
+				if ($(this).is(':checked'))
+					$(this).closest('tr').addClass('rowselected');
+				else
+					$(this).closest('tr').removeClass('rowselected');
+				if ($('#tabela tbody :checkbox').length == $('#tabela tbody :checkbox:checked').length)
+					$('#tabela thead :checkbox').prop('checked', true);
+				else
+					$('#tabela thead :checkbox').prop('checked', false);
+			});
+
 	});
 	</script>
 </head>
@@ -23,7 +47,7 @@
 				<h2 class="titulo">Cadastro de Usuário</h2>
 			<div class="line">
 				<label for="inp-nome" class="grid col2">Nome:</label>
-				<input type="text" id="inp-nome" class="grid col5">
+				<input type="text" id="inp-nome" class="grid col5" autofocus>
 			</div>
 			<div class="line">
 				<label for="txt-usuario" class="grid col2">Usuário:</label>
@@ -63,13 +87,16 @@
 			</div>
 
 			<div class="line">
-				<table class="grid" style="margin:0 auto; width: 800px;">
+				<table class="grid" style="margin:0 auto; width: 800px;" id="tabela">
 					<thead>
 						<tr>
 							<th align="center" style="width: 100px;">Código</th>
 							<th align="center" style="width: 200px;">Usuário</th>
 							<th align="center">Nome</th>
 							<th align="center" style="width: 100px;">Data Cadastro</th>
+							<th width="25px">
+								<input type="checkbox" id="check-todos">
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -78,24 +105,36 @@
 							<td>alexmartins</td>
 							<td>Alex Sandro Martins Moura</td>
 							<td align="center">16/12/2015</td>
+							<td class="input-checkbox">
+								<input type="checkbox">
+							</td>
 						</tr>
 						<tr>
 							<td align="center">1055</td>
 							<td>alexmartins</td>
 							<td>Alex Sandro Martins Moura</td>
 							<td align="center">16/12/2015</td>
+							<td class="input-checkbox">
+								<input type="checkbox">
+							</td>
 						</tr>
 						<tr>
 							<td align="center">1055</td>
 							<td>alexmartins</td>
 							<td>Alex Sandro Martins Moura</td>
 							<td align="center">16/12/2015</td>
+							<td class="input-checkbox">
+								<input type="checkbox">
+							</td>
 						</tr>
 						<tr>
 							<td align="center">1055</td>
 							<td>alexmartins</td>
 							<td>Alex Sandro Martins Moura</td>
 							<td align="center">16/12/2015</td>
+							<td class="input-checkbox">
+								<input type="checkbox">
+							</td>
 						</tr>
 					</tbody>
 				</table>

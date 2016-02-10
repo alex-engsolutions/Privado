@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Design Responsivo</title>
+	<link rel="shortcut icon" href="images/favicon1.png">
+	<link rel="stylesheet" href="css/fluido.css" media="screen">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">
+	<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+	<style type="text/css">
+		html,body{
+			height: 100%;
+		}
+		.link{
+			text-decoration: none;
+			color: #fff;
+			height: 28px;
+			display: block;
+			padding: 7px 0 7px 5px;
+			font-family: "Roboto";
+			font-size: 15px;
+			transition: color 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+		}
+		.aux-link{
+			padding-left: 10px;
+			color: #fff;
+			transition: color 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+		}
+		#menu{
+			background-color: #252525;
+			width: 250px;
+			height: 100%;
+			box-shadow: 0 0 15px 3px #252525;
+		}
+		#menu > section{
+			width: 100%;
+		}
+		ul > li{
+			cursor: pointer;
+			width: 100%;
+			position: relative;
+			transition: background-color 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+		}
+		img{
+			max-width:100%;
+			height:auto;
+		}
+		li ul{
+			display: none;
+			background-color: #404040;
+		}
+		ul > li:hover{
+			background-color: #bbb;
+		}
+		ul li .link:hover .aux-link{
+			color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("ul li").click(function(){
+				if($(this).is(":visited"))
+					$(this).children("ul").slideUp();
+				else
+					$(this).siblings().children("ul").slideUp();
+					$(this).children("ul").slideDown();
+			});
+		});
+	</script>
+</head>
+<body>
+	<nav id="menu">
+		<img src="images/logo2.png" alt="Logo">
+		<section id="content-menu">
+			<ul class="menu1">
+				<li><a href="#" class="link">
+					<span class="aux-link">Inicio</span></a>
+					<ul class="submenu">
+						<li><a href="#" class="link">
+							<span class="aux-link">Sub Item 1</span></a>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#" class="link">
+				<span class="aux-link">Produtos</span></a>
+				<ul>
+					<li><a href="#" class="link">Sub Item 2</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="link">
+				<span class="aux-link">Institucional</span></a>
+				<ul>
+					<li><a href="#" class="link">Sub Item 3</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="link">
+				<span class="aux-link">Empresa</span></a>
+				<ul>
+					<li><a href="#" class="link">Sub Item 4</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="link">
+				<span class="aux-link">Contatos</span></a>
+				<ul>
+					<li><a href="#" class="link">Sub Item 5</a></li>
+				</ul>
+			</li>
+		</ul>	
+	</section>
+</nav>
+</body>
+</html>

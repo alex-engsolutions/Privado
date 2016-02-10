@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lista Telefonica</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+	.jumbotron {
+		margin-top: 20px;
+    	width: 400px;
+    	margin: 0 auto;
+	}
+	th{
+		text-align: center;
+	}
+	.form-control{
+		margin-bottom: 5px;
+	}
+	</style>
+
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	angular.module('listaTelefonica',[]);
+	angular.module('listaTelefonica').controller('listaTelefonicaCtrl',function($scope){
+		$scope.app = 'Lista Telefonica';
+		$scope.contatos = [
+			{nome: 'Pedro', telefone: '99998888'},
+			{nome: 'João', telefone: '99998899'},
+			{nome: 'Maria', telefone: '99996666'}
+		];
+		$scope.addContato = function(contato){
+			$scope.contatos.push(angular.copy(contato));
+			delete $scope.contato;
+		}
+	})
+	</script>
+</head>
+<body ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron text-center">
+		<h4>{{app}}</h4>
+		<table class="table table-bordered" style="margin-top: 20px;">
+			<thead>
+				<tr>
+					<th>Nome</th> 
+					<th>Telefone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="contato in contatos">
+					<td>{{contato.nome}}</td>
+					<td>{{contato.telefone}}</td>
+				</tr>
+			</tbody>
+		</table>
+		</hr>
+		<input type="text" class="form-control" id="txtNome" ng-model="contato.nome" placeholder="Nome...">		
+		<input type="text" class="form-control" id="txtFone"ng-model="contato.telefone" placeholder="Telefone...">
+		<button type="button" class="btn btn-primary btn-block" ng-click="addContato(contato)">Adicionar</button>
+		{{contato}}		
+	</div>
+</body>
+</html>
