@@ -39,44 +39,54 @@
 		];
 
 		$scope.operadoras = [
-			{nome: 'Oi', codigo: 14, categoria: 'Celular'},
-			{nome: 'Vivo', codigo: 15, categoria: 'Celular'},
-			{nome: 'Tim', codigo: 41, categoria: 'Celular'},
-			{nome: 'GVT', codigo: 25, categoria: 'Fixo'},
-			{nome: 'Embratel', codigo: 21, categoria: 'Fixo'}
+			{nome: 'Oi', codigo: 14, categoria: 'Celular', cor: 'orange'},
+			{nome: 'Vivo', codigo: 15, categoria: 'Celular', cor: 'lightblue'},
+			{nome: 'Tim', codigo: 41, categoria: 'Celular', cor: 'blue'},
+			{nome: 'GVT', codigo: 25, categoria: 'Fixo', cor: 'red'},
+			{nome: 'Embratel', codigo: 21, categoria: 'Fixo', cor: 'green'}
 		]
 		$scope.addContato = function(contato){
 			$scope.contatos.push(angular.copy(contato));
 			delete $scope.contato;
 		}
+		$scope.apagarContatos = function(contatos){
+			$scope.contatos = contatos.filter(function(contato){
+				if(!contato.selecionado) return contato;
+			});
+				console.log(contatos);
+		}
+		$scope.isContatoSelecionado = function(contatos){
+			return contatos.some(function(contato){
+				return contato.selecionado;
+			});
+			console.log(isContatoSelecionado);
+		}
+		$scope.classe1 = "selecionado";
+		$scope.classe2 = "negrito";
 	});
 
-		function btnExcluir(obj){
-			
-			// Capturamos a referência da TR (linha) pai do objeto
-                var objTR = obj.parentNode.parentNode;
-                // Capturamos a referência da TABLE (tabela) pai da linha
-                var objTable = objTR.parentNode;
-                // Capturamos o índice da linha
-                var indexTR = objTR.row;
-                // Chamamos o método de remoção de linha nativo do JavaScript, passando como parâmetro o índice da linha  
-                objTable.deleteRow(indexTR);
-
-		}
 	</script>
 	<style>
-	td > button.btn{
-		padding: 0 5px;
-		text-align: left;
-		border-style: none;
-		background-color: transparent;
-	}
-	td > button.btn:visited{
-		border-style: none;
-	}
-	td > button.btn > i[class="fa fa-times-circle"]{
-		color: red;
-	}
+		td > button.btn{
+			padding: 0 5px;
+			text-align: left;
+			border-style: none;
+			background-color: transparent;
+		}
+		td > button.btn:visited{
+			border-style: none;
+		}
+		td > button.btn > i[class="fa fa-times-circle"]{
+			color: red;
+		}
+		.selecionado{
+			background-color: rgb(36, 187, 232);
+			transition: color 0.5s linear;
+
+		}
+		.negrito{
+			font-weight: bold;
+		}
 	</style>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
@@ -85,34 +95,32 @@
 		<table class="table table-bordered" style="margin-top: 20px;">
 			<thead>
 				<tr>
+					<th style="width: 25px;"></th>
 					<th>Nome</th> 
 					<th style="width: 100px;">Telefone</th>
 					<th style="width: 100px;">Operadora</th>
 					<th style="width: 100px;">Categoria</th>
-					<th style="width: 25px;"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="contato in contatos">
+				<tr ng-repeat="contato in contatos" ng-class="{'selecionado negrito': contato.selecionado}">
+					<td><input type="checkbox" ng-model="contato.selecionado"></td>
 					<td class="text-left">{{contato.nome}}</td>
 					<td>{{contato.telefone}}</td>
-					<td>{{contato.operadora.nome}}</td>
+					<td ng-style="{'color': contato.operadora.cor}">{{contato.operadora.nome}}</td>
 					<td>{{contato.operadora.categoria}}</td>
-					<td>
-						<button type="button" class="btn" title="Remover Registro" onclick="btnExcluir(this)" id="btnDel">
-							<i class="fa fa-times-circle"></i>
-						</button>
-					</td>
 				</tr>
 			</tbody>
 		</table>
 		</hr>
-		<input type="text" class="form-control" id="txtNome" ng-model="contato.nome" placeholder="Nome...">	
-		<input type="text" class="form-control" id="txtFone"ng-model="contato.telefone" placeholder="Telefone...">
+		<input type="text" class="form-control" id="txtNome" ng-model="contato.nome" placeholder="Nome..."/>	
+		<input type="text" class="form-control" id="txtFone"ng-model="contato.telefone" placeholder="Telefone..."/>
 		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
 			<option value="">Selecione um Operadora...</option>
 		</select>
-		<button type="button" class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="addContato(contato)">Adicionar</button>	
+		<button type="button" class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="addContato(contato)">Adicionar</button>
+		<button type="button" class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Remover Selecionados</button>	
 	</div>
+	<div ng-include="'footer.html'"></div>
 </body>
 </html>
