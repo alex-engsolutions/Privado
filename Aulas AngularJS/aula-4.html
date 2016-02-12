@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="listaTelefonica">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Lista Telefonica</title>
 
@@ -68,16 +68,16 @@
 	</script>
 	<style>
 		td > button.btn{
-			padding: 0 5px;
+			padding: 0;
 			text-align: left;
 			border-style: none;
-			background-color: transparent;
+			background-color: transparent !important;
+			outline: none;
 		}
-		td > button.btn:visited{
+		td > button.btn:visited,td > button.btn:active{
 			border-style: none;
-		}
-		td > button.btn > i[class="fa fa-times-circle"]{
-			color: red;
+			border: none;
+			background-color: transparent !important;
 		}
 		.selecionado{
 			background-color: rgb(36, 187, 232);
@@ -86,6 +86,15 @@
 		}
 		.negrito{
 			font-weight: bold;
+		}
+		td .btn i[class*='times']{
+			color: red;
+		}
+		td .btn i[class*='pencil']{
+			color: #014190;
+		}
+		td .btn:hover{
+			background-color: transparent !important;
 		}
 	</style>
 </head>
@@ -100,6 +109,7 @@
 					<th style="width: 100px;">Telefone</th>
 					<th style="width: 100px;">Operadora</th>
 					<th style="width: 100px;">Categoria</th>
+					<th style="width: 50px;"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -109,18 +119,36 @@
 					<td>{{contato.telefone}}</td>
 					<td ng-style="{'color': contato.operadora.cor}">{{contato.operadora.nome}}</td>
 					<td>{{contato.operadora.categoria}}</td>
+					<td>
+						<!-- <a href="#">
+							<i class="fa fa-pencil-square"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-times-circle"></i>
+						</a> -->
+						<button type="button" class="btn btn-default">
+							<i class="fa fa-pencil"></i>
+						</button>
+						<button type="button" class="btn btn-default">
+							<i class="fa fa-times"></i>
+						</button>
+					</td>			
 				</tr>
 			</tbody>
 		</table>
 		</hr>
-		<input type="text" class="form-control" id="txtNome" ng-model="contato.nome" placeholder="Nome..."/>	
-		<input type="text" class="form-control" id="txtFone"ng-model="contato.telefone" placeholder="Telefone..."/>
-		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
-			<option value="">Selecione um Operadora...</option>
+		<form name="contatoForm">
+			É Válido: {{contatoForm.$valid}}<br/>
+			É Inválido: {{contatoForm.$invalid}}<br/>
+			<input type="text" class="form-control" id="txtNome" name="nome" ng-model="contato.nome" ng-required="true" placeholder="Nome..."/>	
+			<input type="text" class="form-control" id="txtFone" name="fone" ng-model="contato.telefone" ng-required="true" placeholder="Telefone..."/>
+			<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+				<option value="">Selecione um Operadora...</option>
+			</form>
 		</select>
-		<button type="button" class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="addContato(contato)">Adicionar</button>
-		<button type="button" class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Remover Selecionados</button>	
+		<button type="button" class="btn btn-primary btn-block" ng-disabled="contatoForm.$invalid" ng-click="addContato(contato)">Adicionar</button>
+		<div ng-show="contatoForm.nome.$invalid" class="alert alert-danger">Preencha o campo, Nome.</div>
+		<div ng-show="contatoForm.fone.$invalid" class="alert alert-danger">Preencha o campo, Telefone.</div>
 	</div>
-	<!-- <div ng-include="'footer.html'"></div> -->
 </body>
 </html>
