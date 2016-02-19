@@ -14,50 +14,90 @@
 	<style type="text/css">
 		html,body{
 			height: 100%;
+			transform: rotate(180deg);
 		}
-		.link{
+		body{
+			background: url(images/bg-azul.jpg) 50% 50% no-repeat;
+			background-origin: all;
+		}
+		header{
+			position: relative;
+			background-color: transparent;
+			width: 100%;
+			height: 100px;
+			border-bottom: 1px solid #fff;
+		}
+		#menu ul{
+			padding: 0;
+		}
+		#menu ul li a{
 			text-decoration: none;
 			color: #fff;
-			height: 28px;
-			display: block;
-			padding: 7px 0 7px 5px;
 			font-family: "Roboto";
-			font-size: 15px;
-			transition: color 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-		}
-		.aux-link{
-			padding-left: 10px;
-			color: #fff;
-			transition: color 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+			text-transform: uppercase;
+			display: block;
+			font-size: 16px;
+			line-height: 1;
+			padding: 5px 5px;
 		}
 		#menu{
-			background-color: #252525;
-			width: 250px;
-			height: 100%;
-			box-shadow: 0 0 15px 3px #252525;
-		}
-		#menu > section{
-			width: 100%;
+			clear: both;
+			margin: 0 auto;
+			max-width: 1377px;
+			min-height: 100px;
+			position: relative;
 		}
 		ul > li{
-			cursor: pointer;
-			width: 100%;
+			display: inline-block;
 			position: relative;
-			transition: background-color 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+			margin-right: 40px;
+			margin-top: 40px;
+			float: left;
 		}
-		img{
-			max-width:100%;
-			height:auto;
+		#menu ul li a::before{
+			top: -2px;
+			-webkit-transform: translateY(-10px);
+			-moz-transform: translateY(-10px);
+			transform: translateY(-10px);
 		}
-		li ul{
-			display: none;
-			background-color: #404040;
+		#menu ul li a::after{
+			bottom: 0;
+			-webkit-transform: translateY(10px);
+			-moz-transform: translateY(10px);
+			transform: translateY(10px);
 		}
-		ul > li:hover{
-			background-color: #bbb;
+		#menu ul li a::before,#menu ul li a::after{
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: #fff;
+			content: '';
+			opacity: 0;
+			-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+			-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+			transition: opacity 0.3s, transform 0.3s;
 		}
-		ul li .link:hover .aux-link{
-			color: red;
+		#menu ul li a:hover::before, #menu ul li a:hover::after{
+			opacity: 1;
+			-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+			-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+			transition: opacity 0.3s, transform 0.3s;
+			-webkit-transform: translateY(0);
+			-moz-transform: translateY(0);
+			transform: translateY(0);
+		}
+		#menu ul li a:focus::before, #menu ul li a:focus::after{
+			opacity: 1;
+			-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+			-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+			transition: opacity 0.3s, transform 0.3s;
+			-webkit-transform: translateY(0);
+			-moz-transform: translateY(0);
+			transform: translateY(0);
+		}
+		#logo{
+			margin-top: 20px;
 		}
 	</style>
 	<script type="text/javascript">
@@ -74,45 +114,30 @@
 	</script>
 </head>
 <body>
-	<nav id="menu">
-		<img src="images/logo2.png" alt="Logo">
-		<section id="content-menu">
-			<ul class="menu1">
-				<li><a href="#" class="link">
-					<span class="aux-link">Inicio</span></a>
-					<ul class="submenu">
-						<li><a href="#" class="link">
-							<span class="aux-link">Sub Item 1</span></a>
-						</a>
+	<header>
+		<section>
+			<nav id="menu">
+				<ul class="menu1">
+					<li><a href="#" class="link">Empresa</a>
 					</li>
-				</ul>
-			</li>
-			<li><a href="#" class="link">
-				<span class="aux-link">Produtos</span></a>
-				<ul>
-					<li><a href="#" class="link">Sub Item 2</a></li>
-				</ul>
-			</li>
-			<li><a href="#" class="link">
-				<span class="aux-link">Institucional</span></a>
-				<ul>
-					<li><a href="#" class="link">Sub Item 3</a></li>
-				</ul>
-			</li>
-			<li><a href="#" class="link">
-				<span class="aux-link">Empresa</span></a>
-				<ul>
-					<li><a href="#" class="link">Sub Item 4</a></li>
-				</ul>
-			</li>
-			<li><a href="#" class="link">
-				<span class="aux-link">Contatos</span></a>
-				<ul>
-					<li><a href="#" class="link">Sub Item 5</a></li>
-				</ul>
-			</li>
-		</ul>	
-	</section>
-</nav>
+					<li><a href="#div1" class="link">Parceiros</a>
+					</li>
+					<li><a href="#" class="link">Clientes</a>
+					</li>
+					<li><a href="#" class="link">Produtos e Serviços</a>
+					</li>
+					<li id="logo"><img src="images/gear-icon.svg"></li>
+					<li><a href="#" class="link">Coworking</a>
+					</li>
+					<li><a href="#" class="link">Expertises</a>
+					</li>
+					<li><a href="#" class="link">Trabalhe Conosco</a>
+					</li>
+					<li><a href="#" class="link">Eventos</a>
+					</li>
+				</ul>	
+			</nav>
+		</section>
+	</header><!-- /header -->
 </body>
 </html>
